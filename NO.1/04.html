@@ -47,6 +47,17 @@
         
         .tabList li {
             cursor: pointer;
+            width: 100px;
+            border: 1px solid #fff;
+        }
+        
+        .tabList li img {
+            width: 100%;
+            display: block;
+        }
+        
+        .tabList li.act {
+            border: 1px solid #f00;
         }
     </style>
 
@@ -67,20 +78,20 @@
     -->
     <div class="wrapper" id="wrapper">
         <ul class="tabList">
-            <li class="tabItem">
-                <img src="./smallImg1.jpg" alt="">
+            <li class="act">
+                <img src="./1.jpg" alt="" class="tabItem">
             </li>
-            <li class="tabItem">
-                <img src="./smallImg2.jpg" alt="">
+            <li>
+                <img src="./2.jpg" alt="" class="tabItem">
             </li>
-            <li class="tabItem">
-                <img src="./smallImg3.jpg" alt="">
+            <li>
+                <img src="./3.jpg" alt="" class="tabItem">
             </li>
-            <li class="tabItem">
-                <img src="./smallImg4.jpg" alt="">
+            <li>
+                <img src="./4.jpg" alt="" class="tabItem">
             </li>
-            <li class="tabItem">
-                <img src="./smallImg5.jpg" alt="">
+            <li>
+                <img src="./5.jpg" alt="" class="tabItem">
             </li>
         </ul>
     </div>
@@ -96,8 +107,12 @@
         // 遍历每一个li注册事件
         for (let i = 0; i < $tabItem.length; i++) {
             $tabItem[i].onmouseover = function() {
-                //console.log(111);
+                console.log(this.parentNode);
                 // 鼠标滑过要执行的代码
+                // getAttribute()有两个参数，不设置第二个参数会报错
+                this.parentNode.setAttribute('class', 'act');
+                let smallImgSrc = this.getAttribute('src');
+                $wrapper.style.background = `url(${smallImgSrc}) no-repeat center top`;
             }
         }
     </script>
