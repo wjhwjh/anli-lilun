@@ -114,6 +114,8 @@
         let elTip = document.getElementsByClassName('tips')[0];
 
         $GetID('score').onblur = function() {
+            // parseFloat()和parseInt()作用类似，parseInt()返回的是的整数，parseFloat()返回的是的小数
+            // 当没有返回值时是NaN
             let value = parseFloat(this.value);
 
             //判断value的值 
