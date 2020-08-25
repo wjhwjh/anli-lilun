@@ -36,11 +36,49 @@
         
         .box {
             padding: 10px 0;
-            display: flex;
-            align-items: center;
+            /* display: flex;
+            align-items: center; */
             /* width: 400px;
             margin: auto;
             border: 1px solid #ccc; */
+        }
+        
+        #code {
+            display: inline-block;
+            width: 120px;
+            height: 40px;
+            margin-bottom: 10px;
+            vertical-align: top;
+            text-align: center;
+            line-height: 40px;
+            font-size: 22px;
+            font-weight: bold;
+            color: #f00;
+            background: #ecec;
+        }
+        
+        #getCode {
+            margin-left: 5px;
+            padding: 0 10px;
+            border: 1px solid #ddd;
+            height: 40px;
+            line-height: 40px;
+        }
+        
+        #iptCode {
+            height: 30px;
+            vertical-align: top;
+            padding-left: 5px;
+            line-height: 30px;
+            border: 1px solid #ddd;
+        }
+        
+        #verificationBtn {
+            padding: 0 20px;
+            height: 30px;
+            line-height: 30px;
+            color: #333;
+            font-size: 12px;
         }
     </style>
 
@@ -48,9 +86,54 @@
 
 <body>
     <div class="box" id="box">
-
+        <div id="code">2345</div><button id="getCode">点击重新获取</button>
+        <div>
+            <input type="text" id="iptCode" placeholder="请输入验证码"> <button id="verificationBtn">验证</button>
+        </div>
     </div>
     <script>
+        //  随机数生成函数, 也就是随机数
+        // 输入框中的输入值和随机数对进行对比
+        // 如果对比相同说明验证码正确
+
+        // 获取DOM的函数
+        function $id(id) {
+            return !!id && typeof id === 'string' ? document.getElementById(id) : null
+        }
+
+        // 生成随机数函数
+        function randomNum() {
+            let code = '';
+            let len = 4;
+            let randomArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'V', 'U', 'W', 'X', 'Y', 'Z'];
+
+            // 如何思考这里的逻辑
+            // 随机从数组中取元素，然后拼接到code变量中
+            for (let i = 0; i < len; i++) {
+                let r = Math.floor(Math.random() * 36);
+                // console.log(r);
+                code += randomArray[r];
+            }
+            return code.toLowerCase();
+        }
+        // 默认初始化
+        $id('code').innerHTML = randomNum();
+        // 点击生成随机数
+        $id('getCode').onclick = function() {
+            let codeNum = randomNum();
+            $id('code').innerHTML = codeNum;
+        }
+
+        // 验证随机数
+        $id('verificationBtn').onclick = function() {
+            let value = $id('iptCode').value.toLowerCase();
+            let code = $id('code').innerHTML;
+            if (value === code) {
+                window.location.href = 'https://www.baidu.com/'
+            } else {
+                alert('请输入正确的验证码');
+            }
+        }
     </script>
 </body>
 
