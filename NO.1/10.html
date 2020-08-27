@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>九宫格</title>
+
+    <style>
+        body {
+            padding: 10px;
+            font-family: 'Microsoft YaHei', Verdana, Arial, Helvetica, sans-serif;
+        }
+        
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            border: none;
+            box-sizing: border-box;
+        }
+        
+        h2 {
+            text-align: center;
+            padding: 15px 0;
+            font-size: 24px;
+            font-weight: normal;
+        }
+        button{
+            outline: none;
+            border: 0;
+        }
+        pre {
+            font-size: 16px;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 20px;
+            font-family: 'Microsoft YaHei', Verdana, Arial, Helvetica, sans-serif;
+        }
+        #box{
+            position: relative;
+        }
+        #box .item{
+            padding-bottom: 15px;
+            width: 215px;
+            margin: 10px;
+            box-shadow: 0 0 25px rgba(0, 0, 0 , 0.1);
+        }
+        #box .item h1{
+            padding: 5px 15px;
+            font-size: 16px;
+            color: #333;
+
+        }
+        #box .item .text{
+            padding: 5px 15px;
+            font-size: 14px;
+            color: #888;
+        }
+        .btn-wrapper{
+            margin-bottom: 20px;
+        }
+        .btn-wrapper button{
+            padding: 5px 15px;
+            margin-right: 5px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="btn-wrapper">
+        <button>3列</button>
+        <button>4列</button>
+        <button>5列</button>
+    </div> 
+    <div class="box" id='box'>
+        <div class = 'item'>
+            <img src="./pic.jpg" alt="">
+            <h1>这里是标题</h1>
+            <p class="text">这里是描述，描述就是说明这里要做的事情。</p>
+        </div>
+    </div>
+
+
+    <script>
+    </script>
+</body>
+
+</html>
