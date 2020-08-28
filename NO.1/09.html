@@ -49,7 +49,7 @@
       // 使用转化后的日期代替传入的格式
       if (/(y+)/.test(fmt)) { // 匹配年份
         // console.log(RegExp.$1)
-        // Regexp.$1指的是首次匹配成功的集合
+        // Regexp.$1指的是首次匹配成功的集合，Regexp.$1这个第一次看到
         fmt = fmt.replace(RegExp.$1, (date.getFullYear() + '').substr(4 - RegExp.$1.length))
         // console.log(fmt)
       }
@@ -82,6 +82,9 @@
 
     // 注意这里的格式，都是小写
     fomatDate(time, 'yyyy-mm-dd hh:mm')
+
+    // 正则表达式中集合()存在的情况下，$1代表第一个匹配到的集合
+
 
   </script>
 </body>
