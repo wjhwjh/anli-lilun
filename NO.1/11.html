@@ -73,7 +73,8 @@
        
         let nowTimeDiv = $getId('nowTime');
         let nowDayDiv = $getId('nowDay');
-
+        
+        // 定时器执行时间
         setInterval(nowDate, 10)
 
         // 处理当前时间函数
@@ -89,9 +90,6 @@
             let minutes = dateObj.getMinutes();
             let seconds = dateObj.getSeconds();
             let weekArray = ['星期日', '星期一', '星期二' ,'星期三', '星期四', '星期五', '星期六']
-            let temp = `${year}/${zero(mouth)}/${zero(day)} ${weekArray[week]}`;
-            nowTimeDiv.innerHTML = temp;
-            // 当前时间时分
             let ap= 'AM';
             if(hours>12){
                 ap="PM";
@@ -100,6 +98,10 @@
             }else{
                 ap="AM";
             }
+            // 当前日期
+            let temp = `${year}/${zero(mouth)}/${zero(day)} ${weekArray[week]}`;
+            nowTimeDiv.innerHTML = temp;
+            // 当前时间时分
             let time = `${zero(hours)}:${zero(minutes)} ${zero(seconds)} - ${ap}`;
             nowDayDiv.innerHTML = time;
         }
@@ -108,8 +110,6 @@
             str = str+'';
             return str.length===1 ? '0'+ str : str
         }
-      
-        //nowDate();
     </script>
 </body>
 
