@@ -90,10 +90,9 @@ class Tab{
     e.stopPropagation();
     let parent = this.parentNode;
     let index = parent.index;
-    console.log('索引--',index)
+
     parent.remove();
     that.contentDiv[index].remove();
-    console.log(parent);
     that.init()
   }
   // 切换
