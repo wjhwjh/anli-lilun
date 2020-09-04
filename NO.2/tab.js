@@ -11,7 +11,7 @@
 /*
 问题：
 1. that 的定义，定义为全局变量吗？如何使用，为什么要这样做
-2.
+2. 事件函数也是一种函数和声明式函数相同
 
 
 为DOM插入元素时使用的内置方法，显的很高级的样子
@@ -47,6 +47,7 @@ class Tab{
       this.navList[i].index=i;
       this.navList[i].onclick=this.toggleTab;
       this.deleteDiv[i].onclick=this.deleteTab;
+      this.editNav[i].ondblclick=this.editTab;
     }
     // 添加操作
     this.add.onclick = this.addTab;
@@ -66,6 +67,8 @@ class Tab{
     this.navList = this.domId.querySelectorAll('li');
     this.contentDiv=this.domId.querySelectorAll('.content-wrapper > div');
     this.deleteDiv = this.domId.querySelectorAll('.tabDelete');
+    this.editNav = this.nav.querySelectorAll('span');
+    this.editContent = this.content.querySelectorAll('span');
   }
   // 添加
   addTab(){
@@ -74,11 +77,11 @@ class Tab{
     
     that.clearClass();
     // 添加切换的li
-    let li = '<li class="active">新添加 <a class="tabDelete" href="javascript:void(0)">-</a></li>';
+    let li = '<li class="active"><span>新添加</span><a class="tabDelete" href="javascript:void(0)">-</a></li>';
     that.nav.insertAdjacentHTML('beforeend',li)
 
     // 添加切换li对应的内容
-    let div = ' <div class="active">新添加的内容'+random+'</div>';
+    let div = '<div class="active"><span>新添加的内容'+random+'</span></div>';
     that.content.insertAdjacentHTML('beforeend', div);
 
     // 对于新添加的元素没有注册的事件
@@ -90,19 +93,68 @@ class Tab{
     e.stopPropagation();
     let parent = this.parentNode;
     let index = parent.index;
-
+    //console.log('父级元素--', parent.getAttribute('class'))
+    
+    // 先执行删除操作
     parent.remove();
     that.contentDiv[index].remove();
-    that.init()
+
+    // console.log(that.nav.querySelector('.active'))
+    
+    //console.log('父级元素',parent);
+    // 删除以后，DOM并没有更新，所有还是能获取到父级元素的 
+    // 这是一种实现方法
+    if(parent.getAttribute('class')==='active'){
+      // 判断当前点击的是否是第一个，
+      index===0? index:index--;
+      //index--;
+      // console.log(index);
+      // index<0?index=0:index;
+      //console.log('索引',index);
+      //更新DOM，这里必须更新DOM
+      that.upDateDom();
+      that.init();
+      // 重置DOM的样式，这里必须得判断是否存在，如果把最后一个删除掉，就会报错
+      that.navList[index]&&that.navList[index].click();
+      that.contentDiv[index]&&(that.contentDiv[index].className='active');
+      return true
+     }
+     that.init();
   }
   // 切换
   toggleTab(){
+    // console.log('这是一个点击事件',this);
     // 这里的this指的是点击的当前DOM。并不是这个构造函数生成的对象
     // 要想调用构造函数中其它方法和属性，不能使用this调用，而是使用that
     // console.log(this.index, that.contentDiv[0]);
     that.clearClass();
     this.className='active';
-    that.contentDiv[this.index].className='active';
+    that.contentDiv[this.index].className='active'; 
+  }
+  editTab(){
+    // 编辑功能
+    let str = this.innerText;
+
+    // window.getSelection?window.getSelection().removeAllRanges:document.select.empty();
+    console.log(str);
+    this.innerHTML = `<input type="text">`;
+    let input = this.children[0];
+    input.value = str;
+    input.select();
+    input.onblur=function(){
+      //console.log(input.value)
+      this.parentNode.innerHTML = this.value;
+    }
+    document.onkeyup=function(e){
+      if(e.keyCode===13){
+        // console.log('键盘事件', e);
+        input.blur();
+      }
+    } 
+
+    // let value = input.value;
+   // console.log('这是一个DOM', this, input);
+  
   }
 }
 

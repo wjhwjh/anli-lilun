@@ -35,6 +35,9 @@
         a{
             text-decoration: none;
         }
+        input:focus{
+            outline: 0;
+        }
         .tab-wrapper{
             margin: auto;
             width: 800px;
@@ -75,6 +78,7 @@
             cursor: pointer;
             overflow: hidden;
         }
+      
         .nav li.active{
             background: #fff;
             border-bottom: 0;
@@ -107,6 +111,19 @@
         .content-wrapper > div.active{
             display: block;
         }
+        /*css实现双击去掉默认选中文字*/
+        .nav li, .content-wrapper{
+            -moz-user-select:none;/*火狐*/
+            -webkit-user-select:none;/*webkit浏览器*/
+            -ms-user-select:none;/*IE10*/
+            -khtml-user-select:none;/*早期浏览器*/
+            user-select:none;
+        }
+        .nav li input{
+            border: 1px solid #ccc;
+            height: 30px; 
+            width: 100px;    
+        }
     </style>
 </head>
 
@@ -115,16 +132,16 @@
 <div class="tab-wrapper" id="tabWrapper">
     <div class="nav-wrapper">
         <ul class="nav">
-            <li class="active">HTML <a class="tabDelete" href="javascript:void(0)">-</a></li>
-            <li>css <a class="tabDelete" href="javascript:void(0)">-</a></li>
-            <li>HTML <a class="tabDelete" href="javascript:void(0)">-</a></li>
+            <li class="active"><span>JS</span> <a class="tabDelete" href="javascript:void(0)">-</a></li>
+            <li><span>css</span> <a class="tabDelete" href="javascript:void(0)">-</a></li>
+            <li><span>HTML</span><a class="tabDelete" href="javascript:void(0)">-</a></li>
         </ul>
         <span class="add">+</span>
     </div>
     <div class="content-wrapper">
-        <div class="active">1</div>
-        <div>2</div>
-        <div>3</div>
+        <div class="active"><span>1</span></div>
+        <div><span>2</span></div>
+        <div><span>3</span></div>
     </div>
 </div>
 
