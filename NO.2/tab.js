@@ -152,11 +152,9 @@ class Tab{
         this.blur();
       }
     } 
-
     // let value = input.value;
    // console.log('这是一个DOM', this, input);
   
   }
 }
-
 new Tab('#tabWrapper')
