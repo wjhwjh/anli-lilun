@@ -48,6 +48,7 @@ class Tab{
       this.navList[i].onclick=this.toggleTab;
       this.deleteDiv[i].onclick=this.deleteTab;
       this.editNav[i].ondblclick=this.editTab;
+      this.contentDiv[i].ondblclick=this.editTab;
     }
     // 添加操作
     this.add.onclick = this.addTab;
@@ -145,10 +146,10 @@ class Tab{
       //console.log(input.value)
       this.parentNode.innerHTML = this.value;
     }
-    document.onkeyup=function(e){
+    input.onkeyup=function(e){
       if(e.keyCode===13){
         // console.log('键盘事件', e);
-        input.blur();
+        this.blur();
       }
     } 
 
