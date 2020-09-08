@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>本地存储</title>
+
+    <style>
+        body {
+            padding: 30px;
+            font-family: 'Microsoft YaHei', Verdana, Arial, Helvetica, sans-serif;
+        }
+        
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            border: none;
+            box-sizing: border-box;
+        }
+        
+        h2 {
+            text-align: center;
+            padding: 15px 0;
+            font-size: 24px;
+            font-weight: normal;
+        }
+        
+        pre {
+            font-size: 16px;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 20px;
+            font-family: 'Microsoft YaHei', Verdana, Arial, Helvetica, sans-serif;
+        }
+    </style>
+
+</head>
+
+<body>
+
+
+
+<script>
+    /*
+    JSON可以实现对象和字符串相互转换
+        JSON.stringify() 把对象转化为字符串
+        JSON.parse() 把字符串转化为对象
+    
+    本地存储里，存储的属性值必须是字符串，所以当使用localStorage时一定要想到字符串和对象之间的转化。
+
+    计算机执行也是有步骤的。就像人做事情一样，有先后顺序，有其目的。 
+    */
+    let obj={
+        a:1,
+        b:2
+    }
+
+    if(!window.localStorage.__seller__){
+        window.localStorage.__seller__= {}
+    }
+    window.localStorage.__seller__= JSON.stringify(obj);
+    console.log('存的是啥--',localStorage.__seller__)
+
+    // 封装一个本地localStorage的存和取
+    // 
+
+
+
+</script>
+</body>
+
+</html>
