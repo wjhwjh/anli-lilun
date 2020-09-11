@@ -89,6 +89,8 @@ Array.prototype.fn
 <pre>
 原型继承
 构造函数的继承，和构造函数的原型继承
+
+构造函数也是函数，有函数的特性和方法，例如call\apply\bind方法，有this属性
 </pre>
 
 <hr/>
@@ -112,6 +114,84 @@ Array.prototype.fn
     3. 想着讲给别人听
 </pre>
 <script>
+function Father(name){
+    this.name = name;
+    //console.log(this)
+}
+
+function Father1(){}
+Father.prototype.work = function() {
+    console.log('父类')
+}
+
+function Child(obj) {
+    this.age = obj.age;
+    // 构造函数的继承，实质就是函数的继承，所以可以使用函数的call方法
+    Father.call(this, obj.name);
+    Father.call(this);
+}
+
+// 原型继承
+// 方法一
+//Child.prototype = new Father();
+// Child.prototype.constructor = Child;
+
+// 方法二, 使用craete
+//Child.prototype = Object.create(Father.prototype);
+//Child.prototype.constructor = Child;
+
+// 方法三
+
+Child.prototype = Object.assign({},Father.prototype)
+Child.prototype.constructor=Child;
+
+// 继承多个
+Object.assign(Child.prototype, Father1.prototype); // 把要继承的另一个父类的构造函数的prototype追加到child.protottype上就可以了
+
+let childObj = new Child({
+    name:'huizi',
+    age: 18
+})
+
+Child.prototype.hobby = function(){
+    console.log('这是我的爱好~~')
+}
+
+let fatherObj = new Father('我的名字被占用了')
+console.log('子类实例化对象',childObj);
+console.log('父类实例化对象',fatherObj);
+
+
+let o = Object.create(null);
+
+console.log('随便创建的对象哈哈哈', o);
+console.log('随便创建的对象哈哈哈', Object.create(null) == Object.create(null));
+let obj1 = {
+    a: 1,
+    b: 2,
+    c: 3
+}
+let obj2 = {
+    d: 4,
+    e: 5,
+    f: 6,
+    a:5,
+    m: {
+        'name':'huizi',
+        'age': 18
+    }
+}
+
+let obj3 = Object.assign(obj1, obj2);
+obj3.d = 10;
+obj2.e = 15;
+obj2.m['age'] = 15;
+console.log('obj3',obj3, obj1 === obj3)
+console.log('obj1',obj1)
+console.log('obj2',obj2)
+
+// 对象就是对象，让人又恨又爱
+// Object.assign(obj1, obj2)就是单纯的把后一个对象合并到前一个对象上，返回的是合并后的obj1,改变了obj1,很有意思
 
 </script>
 </body>
