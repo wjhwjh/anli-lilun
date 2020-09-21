@@ -43,7 +43,21 @@
             border: 1px solid #ccc; */
         }
         
-        #fild {}
+        #file {
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            width: 100%;
+            z-index: 10;
+        }
+        
+        .file-wrapper {
+            position: relative;
+            width: 200px;
+            height: 20px;
+            background: #ccc;
+        }
     </style>
 
 </head>
@@ -51,7 +65,8 @@
 <body>
     <div class="box" id="box">
         <label for="file">选择上传文件： </label>
-        <input type="file" id="file">
+        <div class="file-wrapper" id='boxfile'>上传文件 <input type="file" id="file" value="这是文件"></div>
+        <!-- <input type="file" id="file" value="这是文件"> -->
     </div>
     <script>
         // .jpg .jpeg .doc .xlsx .txt
@@ -59,7 +74,8 @@
         let file = document.getElementById('file');
         // 当input框改变时要触发的事件是 onchange
         file.onchange = function() {
-            // 获取打开文件的路径
+            console.log(this.value)
+                // 获取打开文件的路径
             let path = this.value; // C:\fakepath\1.jpg
             // 使用lastIndexOf()从后边开始检索，很秒。正向思维的就是也是找“.后缀”这个
             let loc = path.lastIndexOf('.');
@@ -86,6 +102,9 @@
          3. 正则的使用
          
          */
+        // boxfile.onchange = function() {
+        //     console.log(value)
+        // }
     </script>
 </body>
 
