@@ -25,7 +25,7 @@ beforeend
 afterend
 
 */
-let that;
+let that; // 这是一个全局变量
 class Tab{
   constructor(id) {
     that = this; 
