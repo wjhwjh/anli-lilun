@@ -48,7 +48,8 @@
       // 先匹配年份，年份格式可能4位，可能2位
       // 使用转化后的日期代替传入的格式
       if (/(y+)/.test(fmt)) { // 匹配年份
-        // console.log(RegExp.$1)
+        console.log(RegExp)
+          console.log(RegExp.$1)
         // Regexp.$1指的是首次匹配成功的集合，Regexp.$1这个第一次看到
         fmt = fmt.replace(RegExp.$1, (date.getFullYear() + '').substr(4 - RegExp.$1.length))
         // console.log(fmt)

@@ -61,7 +61,7 @@
            // 如果是对象
            if(Array.isArray(obj))target=[];
            for(let key in obj){
-            if(!!deep&&obj[key] instanceof Object){
+            if(!!deep && obj[key] instanceof Object){
                 target[key] = deepObj(obj[key],deep)
             }else{
                 target[key] = obj[key]

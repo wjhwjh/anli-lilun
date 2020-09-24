@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        body {
+            padding: 30px;
+            font-family: 'Microsoft YaHei', Verdana, Arial, Helvetica, sans-serif;
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            border: none;
+            box-sizing: border-box;
+        }
+
+        h2 {
+            text-align: center;
+            padding: 15px 0;
+            font-size: 24px;
+            font-weight: normal;
+        }
+
+        pre {
+            font-size: 16px;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 20px;
+            font-family: 'Microsoft YaHei', Verdana, Arial, Helvetica, sans-serif;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <pre>
+     实现一个方法，将对象属性下划线命名方式全部转化为驼峰式
+ </pre>
+
+    <script>
+        const obj = {
+            first_name: 'chen',
+            cc:{
+                a_ab:1
+            },
+            first_age: 'chen1',
+        }
+        //   const obj1 = {
+        //       firstName:'chen'
+        //   }
+         function  fn(obj){
+            for(let key in obj){
+                let index = key.indexOf('_');
+                // .0
+                
+                if(index!=-1&& obj[key].constructor != Object){
+                    if(/(_)([a-zA-Z])/.test(key)){
+                        //console.log(RegExp.$1,RegExp.$2);
+                        let newkey = key.replace(RegExp.$1+RegExp.$2, RegExp.$2.toUpperCase());
+                        obj[newkey] = obj[key];
+                        delete obj[key]
+                    } 
+                }else if(obj[key] instanceof Object){
+                    fn(obj[key])
+                }
+            }
+           // console.log('这是新对象',obj);
+            return obj
+         }  
+         let obj1 = fn(obj);
+         console.log(obj1)
+
+        //  let a = 'first_name';
+        //  let reg = new RegExp(`(_)([a-z])`);
+        // if(/(_)([a-z])/.test(a)){
+        //     console.log(RegExp.$1,RegExp.$2);
+        //     let b = a.replace(RegExp.$1+RegExp.$2,RegExp.$2.toUpperCase());
+        //     console.log(b)
+        //  } 
+         
+        // let b = a.replace(reg, RegExp.$2);
+        //  console.log(b)
+
+        
+    </script>
+</body>
+
+</html>
