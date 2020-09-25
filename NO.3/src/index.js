@@ -3,7 +3,7 @@
 //  import testfn from './module1.js';
 // console.log(user1);
 // console.log(user2);
-testfn();
+//testfn();
 function testModul(){
   console.log('这是一个模块的入口文件')
   
