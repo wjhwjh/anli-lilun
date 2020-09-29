@@ -39,3 +39,12 @@ js与DOM的关系
 基本的功能
 
 ## webpack内容
+
+初始化项目
+npm init
+npm init -y 默认配置项直接生成
+
+
+
+
+

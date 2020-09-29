@@ -1,5 +1,5 @@
  const path = require('path');
-const UglifyjsWebpack = require('uglifyjs-webpack-plugin')
+const UglifyjsWebpack = require('uglifyjs-webpack-plugin'); //在文件打包的同事还会压缩
 
  module.exports = {
    // 工程的入口文件
@@ -27,6 +27,6 @@ const UglifyjsWebpack = require('uglifyjs-webpack-plugin')
     },
   // 对项目进行处理，比如对打包后文件的压缩、
   plugins: [
-      
+    new UglifyjsWebpack()
   ]
  }
