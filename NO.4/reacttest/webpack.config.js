@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
+
 // HMR 热更新，热替换，当文件改变的时候，不刷新页面直接同步
 // webpack 4.44.2 默认已经有热更新
 module.exports={
@@ -48,10 +49,9 @@ module.exports={
   ],
   // webpack-dev-server相关的配置，包括自定义端口号，热更新
   devServer:{
-    hot: true,
-    part: 3030
+    hot:true,
+    port: 8089
   }
-
 }
 
 /*
