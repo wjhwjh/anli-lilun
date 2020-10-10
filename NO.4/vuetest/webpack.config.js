@@ -22,6 +22,7 @@ console.log('这是数据--',data)
 1. 在整合路径的时。 path.resolve()和path.join()效果是相同的
 2. 在定义别名的时，最好要以@开头，如果只是简单的字符，在使用时会报错
 3. 模拟假数据文章 https://blog.csdn.net/happy_bigqiang/article/details/81700307?utm_medium=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param
+4. 另一种方法 https://blog.csdn.net/weixin_40419104/article/details/87917591
 */
 module.exports = {
   entry:'./src/index.js',
