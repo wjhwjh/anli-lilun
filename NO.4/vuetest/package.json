@@ -17,6 +17,7 @@
     "axios": "^0.20.0",
     "babel-loader": "^8.1.0",
     "css-loader": "^4.3.0",
+    "express": "^4.17.1",
     "html-webpack-plugin": "^4.5.0",
     "loader": "^2.1.1",
     "style-loader": "^1.2.1",
@@ -26,5 +27,8 @@
     "vue-template-compiler": "^2.6.12",
     "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12"
+  },
+  "devDependencies": {
+    "portfinder": "^1.0.28"
   }
 }

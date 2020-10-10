@@ -17,13 +17,12 @@ export default {
     }
   },
   created(){
-    console.log('用来请求数据的--',this.$axios)
+    // console.log('用来请求数据的--',this.$axios)
     this.$axios({
-      url:`/api`
+      url:'/api/data'
     }).then(res=>{
       console.log('请求到的数据',res)
     }) 
-
   },
   components:{
       headnav,
