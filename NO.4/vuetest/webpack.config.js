@@ -1,17 +1,22 @@
 const path = require('path');
-const VueLoaderPlugin = require('vue-loader/lib/plugin'); //引入这行
+const VueLoaderPlugin = require('vue-loader/lib/plugin'); //没有这个插件会报错
 const HtmlWebpackPlugin = require('html-webpack-plugin');
- console.log('2222222222222');
-console.log('路径',path.resolve(__dirname,'./src/components'));
+ 
+/*
+1. 在整合路径的时。 path.resolve()和path.join()效果是相同的
+2. 在定义别名的时，最好要以@开头，如果只是简单的字符，在使用时会报错
+
+*/
 module.exports = {
   entry:'./src/index.js',
   output:{
-    path:path.join(__dirname,'dist'),
+    path:path.resolve(__dirname,'dist'),
     filename:'index.js'
   },
   resolve:{
+    extensions:['.js','.json','.vue'],
     alias:{
-      'components': path.resolve(__dirname,'./src/components')
+      '@component': path.resolve(__dirname,'./src/components')
     }
   },
   module:{
@@ -46,5 +51,13 @@ module.exports = {
       filename: 'index.html'
     }),
     new VueLoaderPlugin()
-  ]
+  ],
+  // webpack-dev-server 配置
+  devServer:{
+    hot:true,
+    port: 8089,
+    proxy:{
+      "/api":`http://v.juhe.cn/joke/content/list.php?key=f04c2c771c088b4ffd34514459291105&page=2&pagesize=10&sort=asc&time=1418745237`
+    }
+  }
 }
