@@ -9,7 +9,7 @@ axios.defaults.headers.common['Authorization'] = "token";
 //console.log(headnav)
 axios.defaults.withCredentials=true
 Vue.prototype.$axios = axios
-
+Vue.prototype.$api = api
 Vue.config.productionTip = false
 
 //console.log('获取不到app',document.getElementById('app'))

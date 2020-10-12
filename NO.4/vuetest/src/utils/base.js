@@ -1,7 +1,5 @@
 const base = {
-  baseUrl:'/api',
-  list:'list'
+  baseUrl:'http://localhost:8089/api',
+  list:'/data'
 }
-
-
 export default base
