@@ -15,9 +15,9 @@ const apiRouter = express.Router()
 app.use('/api', apiRouter)
 
 const appData = require('./data.json');
-const data = appData.result.data;
-
-console.log('这是数据--',data)
+const contentdata = appData.result.data;
+const login = appData.login.userData;
+console.log('这是数据--',login)
 /*
 1. 在整合路径的时。 path.resolve()和path.join()效果是相同的
 2. 在定义别名的时，最好要以@开头，如果只是简单的字符，在使用时会报错
@@ -77,13 +77,18 @@ module.exports = {
     //   "/api":`http://v.juhe.cn/joke/content/list.php?key=f04c2c771c088b4ffd34514459291105&page=2&pagesize=10&sort=asc&time=1418745237`
     // }
     before(app){
+      app.get('/api/login', (req,res)=>{
+        res.json({
+          errno: 0,
+          data: login
+        })
+      }),
       app.get('/api/data', (req,res)=>{
         res.json({
           errno: 0,
-          data: data
+          data: contentdata
         })
       })
     }
-
   }
 }
