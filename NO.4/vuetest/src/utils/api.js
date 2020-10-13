@@ -19,7 +19,10 @@ const api={
   },
   getList(){
       return axios.get(base.baseUrl+base.list)
-  } 
+  },
+  getnav(){
+      return axios.get(base.baseUrl+base.navlist)
+  }
 }
  
 export default api

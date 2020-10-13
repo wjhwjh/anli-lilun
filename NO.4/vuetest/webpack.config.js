@@ -17,6 +17,7 @@ app.use('/api', apiRouter)
 const appData = require('./data.json');
 const contentdata = appData.result.data;
 const login = appData.login.userData;
+const navlist = appData.login.navlist;
 console.log('这是数据--',login)
 /*
 1. 在整合路径的时。 path.resolve()和path.join()效果是相同的
@@ -87,6 +88,12 @@ module.exports = {
         res.json({
           errno: 0,
           data: contentdata
+        })
+      }),
+      app.get('/api/navlist', (req,res)=>{
+        res.json({
+          errno: 0,
+          data: navlist
         })
       })
     }
